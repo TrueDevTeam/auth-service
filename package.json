@@ -1,0 +1,60 @@
+{
+  "fullName": "auth-service",
+  "description": "",
+  "version": "0.0.0",
+  "homepage": "",
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "fullName": "bfedoronchuk",
+    "email": "bfedoronchuk@gmail.com"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "scripts": {
+    "test": "npm run eslint && npm run mocha",
+    "eslint": "eslint src/. test/. --config .eslintrc",
+    "mocha": "mocha test/ --recursive --exit",
+    "develop": "npm run eslint && nodemon ./src --watch src",
+    "prod": "node ./src"
+  },
+  "dependencies": {
+    "@feathersjs/authentication-local": "^1.0.4",
+    "@feathersjs/configuration": "^1.0.0",
+    "@feathersjs/errors": "^3.0.0",
+    "@feathersjs/express": "^1.1.1",
+    "@feathersjs/feathers": "^3.0.0",
+    "cors": "^2.8.4",
+    "feathers-hooks-common": "^3.10.0",
+    "feathers-swagger": "^0.6.0",
+    "joi": "^13.0.2",
+    "jsonwebtoken": "^8.1.0",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "redis": "^2.8.0",
+    "sequelize": "^4.35.2",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}

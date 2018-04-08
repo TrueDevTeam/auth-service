@@ -1,0 +1,19 @@
+const JWT_ENCODING_ALGORITHM = 'RS256';
+const HASH_ALGORITHM = 'sha512';
+const HASH_ENCODING = 'base64';
+
+const USER_AGENT_HEADER = 'user-agent';
+const DEVICE_NAME_HEADER = 'x-device-user-agent';
+const AUTHORIZATION_HEADER = 'authorization';
+
+const FORBIDDEN_STATUS = 403;
+
+module.exports = {
+  JWT_ENCODING_ALGORITHM,
+  HASH_ALGORITHM,
+  HASH_ENCODING,
+  USER_AGENT_HEADER,
+  DEVICE_NAME_HEADER,
+  AUTHORIZATION_HEADER,
+  FORBIDDEN_STATUS
+};

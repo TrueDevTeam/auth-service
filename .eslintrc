@@ -1,0 +1,14 @@
+{
+  "extends": "standard",
+  "rules": {
+    "semi": 0,
+    "linebreak-style": ["error", "unix"],
+    "indent": ["error", 2]
+  },
+  "globals": {
+    "describe": true,
+    "it": true,
+    "before": true,
+    "after": true
+  }
+}

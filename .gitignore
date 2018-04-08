@@ -1,0 +1,5 @@
+*.log
+node_modules
+/.idea
+/jwtRS256.key
+/jwtRS256.key.pub

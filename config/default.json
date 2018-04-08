@@ -1,0 +1,19 @@
+{
+  "host": "localhost",
+  "port": 3033,
+  "privateKey": "jwtRS256.key",
+  "publicKey": "jwtRS256.key.pub",
+  "postgres": {
+    "database": "auth",
+    "host": "localhost",
+    "dialect": "postgres",
+    "username": "postgres",
+    "password": "1234",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    }
+  }
+}
