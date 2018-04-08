@@ -1,38 +1,46 @@
-const jwt = require('jsonwebtoken');
-const fs = require('fs');
+const Promise = require('bluebird');
+const jwt = Promise.promisifyAll(require('jsonwebtoken'));
+const fs = Promise.promisifyAll(require('fs'));
 const crypto = require('crypto');
+const os = require('os');
 
 const config = require('../config/config');
+const logger = require('./logger');
 
 const generateToken = (user, sessionInfo, privateKeyPath) => {
-  return new Promise((resolve, reject) => {
-    const cert = fs.readFileSync(privateKeyPath);
+  return new Promise(async (resolve, reject) => {
+    const cert = await fs.readFileAsync(os.homedir() + privateKeyPath);
     const dataToEncode = {
       email: user.email,
       userAgent: sessionInfo.userAgent,
       loggedAt: sessionInfo.loggedAt
     };
-    jwt.sign(dataToEncode, cert, {algorithm: config.JWT_ENCODING_ALGORITHM}, (err, token) => {
-      const result = {};
-      if (err) {
-        result.error = err;
-        return reject(result);
-      }
-      result.token = token;
+    const result = {};
+    try {
+      result.token = await jwt.signAsync(dataToEncode, cert, {algorithm: config.JWT_ENCODING_ALGORITHM});
       return resolve(result);
-    });
+    } catch (error) {
+      result.error = error;
+      return reject(result);
+    }
   });
 };
 
 const verify = (token, publicKeyPath) => {
-  return new Promise((resolve, reject) => {
-    const cert = fs.readFileSync(publicKeyPath);
-    jwt.verify(token, cert, (err, decoded) => {
-      if (err) {
-        return reject(err);
-      }
+  return new Promise(async (resolve, reject) => {
+    let cert;
+    try {
+      cert = await fs.readFileAsync(os.homedir() + publicKeyPath);
+    } catch (error) {
+      logger.log(error)
+      return reject({});
+    }
+    try {
+      const decoded = await jwt.verifyAsync(token, cert);
       return resolve(decoded);
-    });
+    } catch (error) {
+      return reject(error);
+    }
   });
 }
 

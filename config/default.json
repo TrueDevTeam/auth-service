@@ -1,8 +1,8 @@
 {
   "host": "localhost",
-  "port": 3033,
-  "privateKey": "jwtRS256.key",
-  "publicKey": "jwtRS256.key.pub",
+  "port": 3031,
+  "privateKey": "/.ssh/jwtRS256.key",
+  "publicKey": "/.ssh/jwtRS256.key.pub",
   "postgres": {
     "database": "auth",
     "host": "localhost",

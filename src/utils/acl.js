@@ -13,7 +13,7 @@ const hasRoles = (user, expectedRoles) => {
 }
 
 const isRootAdmin = (user) => {
-  return hasRoles(user, [ roles.ROOT_ADMIN ]);
+  return hasRoles(user, [ roles.CARRIER_ADMIN, roles.SENDER_ADMIN ]);
 }
 
 module.exports = {

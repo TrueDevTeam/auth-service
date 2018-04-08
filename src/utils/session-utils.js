@@ -21,13 +21,13 @@ const getSessionInfo = (user, requestHeaders) => {
   return { session };
 }
 
-const createSession = async (user, headers, privateKeyPath) => {
-  const sessionInfo = getSessionInfo(user, headers);
+const createSession = async (userData, headers, privateKeyPath) => {
+  const sessionInfo = getSessionInfo(userData, headers);
   if (sessionInfo.error) {
     throw new errors.BadRequest(sessionInfo.error);
   }
 
-  const tokenGenerationResult = await encodingService.generateToken(user, sessionInfo.session, privateKeyPath);
+  const tokenGenerationResult = await encodingService.generateToken(userData, sessionInfo.session, privateKeyPath);
   if (tokenGenerationResult.error) {
     throw new errors.GeneralError(tokenGenerationResult.error);
   }
