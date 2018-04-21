@@ -14,7 +14,7 @@ const getSessionInfo = (user, requestHeaders) => {
     return { error: validationError };
   }
   const session = {
-    user: user._id,
+    user: user.id,
     ...requiredHeaders,
     loggedAt: Date.now()
   }
@@ -33,6 +33,7 @@ const createSession = async (userData, headers, privateKeyPath) => {
   }
 
   sessionInfo.session.tokenHash = encodingService.hash(tokenGenerationResult.token);
+  sessionInfo.session.user = userData.id;
   await UserSession.create(sessionInfo.session);
 
   return tokenGenerationResult.token;

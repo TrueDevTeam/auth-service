@@ -8,6 +8,11 @@ const AUTHORIZATION_HEADER = 'authorization';
 
 const FORBIDDEN_STATUS = 403;
 
+const companyTypes = {
+  COMPANY_SENDER: 'COMPANY_SENDER',
+  COMPANY_CARRIER: 'COMPANY_CARRIER'
+};
+
 module.exports = {
   JWT_ENCODING_ALGORITHM,
   HASH_ALGORITHM,
@@ -15,5 +20,6 @@ module.exports = {
   USER_AGENT_HEADER,
   DEVICE_NAME_HEADER,
   AUTHORIZATION_HEADER,
-  FORBIDDEN_STATUS
+  FORBIDDEN_STATUS,
+  companyTypes
 };

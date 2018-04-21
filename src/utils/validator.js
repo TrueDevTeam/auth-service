@@ -13,10 +13,10 @@ const userSchema = joi.object().keys({
   fullName: joi.string().required(),
   phoneNumber: joi.string().required(),
   avatarUrl: joi.string().required(),
-  role: joi.string().allow([
-    userRoles.CARRIER_ADMIN,
-    userRoles.SENDER_ADMIN
-  ]).required()
+  company: joi.object().keys({
+    type: joi.string().required(),
+    name: joi.string().required()
+  }).required()
 });
 
 const requestHeadersSchema = joi.object().keys({
