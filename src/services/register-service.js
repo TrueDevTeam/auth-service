@@ -39,12 +39,13 @@ const registerService = {
       let company;
       try {
         company = await Company.create(userInfo.company);
-        const parentId = company.dataValues.id;
+        const companyId = company.dataValues.id;
+        userInfo.company = companyId;
         if (company.dataValues.type === companyTypes.COMPANY_SENDER) {
-          await CompanySender.create({ parentId });
+          await CompanySender.create({ parentId: companyId });
           userInfo.role = userRoles.SENDER_ADMIN;
         } else {
-          await CompanyCarrier.create({ parentId });
+          await CompanyCarrier.create({ parentId: companyId });
           userInfo.role = userRoles.CARRIER_ADMIN;
         }
       } catch (error) {

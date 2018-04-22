@@ -5,6 +5,7 @@ const encodingUtils = require('../utils/encoding-utils');
 const lockingConfig = require('../config/locking-config');
 const statuses = require('../config/statuses');
 const userRoles = require('../config/user-roles');
+const Company = require('./company');
 
 const User = sequelizeInstance.define('user', {
   id: {
@@ -59,6 +60,15 @@ const User = sequelizeInstance.define('user', {
   loginAttempts: {
     type: Sequelize.INTEGER,
     defaultValue: 0
+  },
+  company: {
+    type: Sequelize.INTEGER,
+    required: true,
+    references: {
+      model: Company,
+      key: 'id',
+      deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+    }
   },
   lockedUntil: {
     type: Sequelize.DATE

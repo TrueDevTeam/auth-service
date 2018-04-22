@@ -13,7 +13,8 @@ const generateToken = (user, sessionInfo, privateKeyPath) => {
     const dataToEncode = {
       email: user.email,
       userAgent: sessionInfo.userAgent,
-      loggedAt: sessionInfo.loggedAt
+      loggedAt: sessionInfo.loggedAt,
+      companyId: user.company
     };
     const result = {};
     try {
