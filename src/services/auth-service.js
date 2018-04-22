@@ -26,7 +26,7 @@ const tokenService = {
       if (validationError) {
         return reject(new errors.BadRequest(validationError));
       }
-      const user = await User.findOne({ email: requestUserInfo.email });
+      const user = await User.findOne({where: { email: requestUserInfo.email }});
       if (!user) {
         return reject(new errors.Forbidden(responseMessages.NO_USER_ERROR_MESSAGE));
       }
