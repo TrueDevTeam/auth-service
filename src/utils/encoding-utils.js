@@ -9,6 +9,21 @@ const logger = require('./logger');
 
 const generateToken = (user, sessionInfo, privateKeyPath) => {
   return new Promise(async (resolve, reject) => {
+    if (!user) {
+      return reject(new Error({
+        error: 'user is not defined'
+      }));
+    }
+    if (!sessionInfo) {
+      return reject(new Error({
+        error: 'sessionInfo is not defined'
+      }));
+    }
+    if (!privateKeyPath) {
+      return reject(new Error({
+        error: 'privateKeyPath is not defined'
+      }));
+    }
     const cert = await fs.readFileAsync(os.homedir() + privateKeyPath);
     const dataToEncode = {
       email: user.email,
